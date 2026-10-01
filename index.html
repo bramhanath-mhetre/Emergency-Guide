@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>Emergency Guide – Numbers, Hospitals, First Aid</head>
+  <meta name="description" content="Emergency contacts for India, nearby hospitals, first aid steps and safety instructions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="brand" href="#top">Emergency Guide</a>
+  <nav aria-label="Sections">
+    <a href="#numbers">Numbers</a>
+    <a href="#nearby">Nearby help</a>
+    <a href="#aid">First aid</a>
+    <a href="#disaster">Disasters</a>
+    <a href="#card">My card</a>
+  </nav>
+  <a class="bar-call" href="tel:112">Call 112</a>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <h1>In an emergency, call 112.</h1>
+    <p>One number for police, fire and ambulance across India. Stay calm, say where you are, and let the operator hang up first.</p>
+    <div class="hero-actions">
+      <a class="btn btn-red" href="tel:112">Call 112 now</a>
+      <button class="btn btn-ghost" id="hospitalBtn" type="button">Find hospitals near me</button>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </section>
+
+  <section id="numbers">
+    <h2>Emergency numbers</h2>
+    <p class="lead">Tap a number to call. All numbers are for India.</p>
+    <div class="numbers">
+      <a class="num primary" href="tel:112"><b>112</b><span>All emergencies</span></a>
+      <a class="num" href="tel:100"><b>100</b><span>Police</span></a>
+      <a class="num" href="tel:101"><b>101</b><span>Fire brigade</span></a>
+      <a class="num" href="tel:108"><b>108</b><span>Emergency ambulance</span></a>
+      <a class="num" href="tel:102"><b>102</b><span>Ambulance (patient transport)</span></a>
+      <a class="num" href="tel:1091"><b>1091</b><span>Women helpline</span></a>
+      <a class="num" href="tel:1098"><b>1098</b><span>Childline</span></a>
+      <a class="num" href="tel:1930"><b>1930</b><span>Cyber crime</span></a>
+      <a class="num" href="tel:14416"><b>14416</b><span>Tele-MANAS mental health</span></a>
+    </div>
+  </section>
+
+  <section id="nearby">
+    <h2>Find help near you</h2>
+    <p class="lead">These open Google Maps around your current location. Your location is used only to build the map link and is not stored.</p>
+    <div class="chips">
+      <button class="chip" type="button" data-q="hospital">Hospitals</button>
+      <button class="chip" type="button" data-q="pharmacy">Pharmacies</button>
+      <button class="chip" type="button" data-q="police station">Police stations</button>
+      <button class="chip" type="button" data-q="fire station">Fire stations</button>
+    </div>
+    <div class="share">
+      <h3>Send your location to someone</h3>
+      <p>Creates a message with a map link to where you are right now.</p>
+      <div class="chips">
+        <button class="chip" type="button" id="shareWa">Share on WhatsApp</button>
+        <button class="chip" type="button" id="shareSms">Share by SMS</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="aid">
+    <h2>First aid</h2>
+    <p class="lead">Call for help first. Then follow these steps until help arrives.</p>
+
+    <details>
+      <summary>Someone is not breathing or has collapsed (CPR)</summary>
+      <ol>
+        <li>Shout for help and call 112 or 108. Ask someone to bring an AED if one is nearby.</li>
+        <li>Lay the person on their back on a firm surface.</li>
+        <li>Place the heel of one hand on the centre of the chest, the other hand on top.</li>
+        <li>Push hard and fast, about 5 to 6 cm deep, 100 to 120 times a minute. Let the chest rise fully each time.</li>
+        <li>Do not stop until help arrives, an AED tells you to, or the person starts breathing.</li>
+      </ol>
+      <p class="tip">If you are untrained, hands-only compressions are enough. Do not give water or food.</p>
+    </details>
+
+    <details>
+      <summary>Heavy bleeding</summary>
+      <ol>
+        <li>Press firmly on the wound with a clean cloth. Do not lift the cloth to check.</li>
+        <li>If blood soaks through, add more cloth on top and keep pressing.</li>
+        <li>Raise the injured limb if you can. Keep the person lying down.</li>
+        <li>Call 108. Do not remove objects stuck in the wound.</li>
+      </ol>
+    </details>
+
+    <details>
+      <summary>Burns</summary>
+      <ol>
+        <li>Hold the burn under cool running water for 20 minutes.</li>
+        <li>Remove rings, watches and loose clothing near the burn, unless stuck to the skin.</li>
+        <li>Cover loosely with a clean non-fluffy cloth or cling film.</li>
+        <li>Do not use ice, toothpaste, butter or oil. Do not pop blisters.</li>
+        <li>Go to a hospital for burns that are large, on the face, hands or genitals, or caused by chemicals or electricity.</li>
+      </ol>
+    </details>
+
+    <details>
+      <summary>Choking (adult, still conscious)</summary>
+      <ol>
+        <li>Ask "Are you choking?" If they can cough, encourage coughing.</li>
+        <li>If they cannot cough, speak or breathe, give 5 firm back blows between the shoulder blades.</li>
+        <li>Then give 5 abdominal thrusts: stand behind them, fist above the navel, pull inward and upward.</li>
+        <li>Repeat back blows and thrusts. Call 112 if it does not clear. If they collapse, start CPR.</li>
+      </ol>
+    </details>
+
+    <details>
+      <summary>Heart attack or stroke signs</summary>
+      <p><strong>Heart attack:</strong> chest pressure or pain, pain spreading to the arm, jaw or back, sweating, breathlessness. Call 108 at once, keep the person seated and calm, and loosen tight clothing. If they are not allergic and a doctor has not told them otherwise, they can chew one 300 mg aspirin.</p>
+      <p><strong>Stroke (FAST):</strong> Face drooping, Arm weakness, Speech slurred, Time to call 108. Note the time symptoms began and tell the hospital.</p>
+    </details>
+
+    <details>
+      <summary>Snakebite</summary>
+      <ol>
+        <li>Move away from the snake. Keep the person calm and still.</li>
+        <li>Keep the bitten limb at or below heart level and immobilise it with a splint or bandage. Remove rings and bangles.</li>
+        <li>Get to a hospital with anti-venom quickly. Call 108.</li>
+        <li>Do not cut the bite, suck out venom, apply a tight tourniquet, or use herbal remedies.</li>
+      </ol>
+    </details>
+
+    <details>
+      <summary>Fainting, seizure, heat stroke</summary>
+      <p><strong>Fainting:</strong> lay the person flat and raise their legs. Loosen clothing. If they do not wake within a minute, call 108.</p>
+      <p><strong>Seizure:</strong> clear the area, cushion the head, turn them on their side after the shaking stops. Do not hold them down or put anything in their mouth. Call 108 if it lasts over 5 minutes.</p>
+      <p><strong>Heat stroke:</strong> hot dry skin, confusion, very high temperature. Move to shade, cool the body with wet cloths and fanning, and call 108.</p>
+    </details>
+  </section>
+
+  <section id="disaster">
+    <h2>Fire, earthquake and flood</h2>
+
+    <details>
+      <summary>Fire</summary>
+      <ol>
+        <li>Alert everyone and leave immediately. Do not collect belongings.</li>
+        <li>Stay low under smoke. Feel doors with the back of your hand before opening.</li>
+        <li>Use stairs, never lifts. Close doors behind you.</li>
+        <li>Once outside, call 101. If clothes catch fire: stop, drop and roll.</li>
+      </ol>
+    </details>
+
+    <details>
+      <summary>Earthquake</summary>
+      <ol>
+        <li>Drop, cover and hold on under a sturdy table, away from windows and heavy furniture.</li>
+        <li>If outdoors, move to an open area away from buildings, poles and trees.</li>
+        <li>After shaking stops, leave carefully. Expect aftershocks. Do not use lifts.</li>
+        <li>Check for gas smells and do not light flames.</li>
+      </ol>
+    </details>
+
+    <details>
+      <summary>Flood</summary>
+      <ol>
+        <li>Move to higher ground early. Follow local authority alerts.</li>
+        <li>Switch off electricity and gas if it is safe to do so.</li>
+        <li>Never walk or drive through moving flood water. Fifteen cm of water can knock you over.</li>
+        <li>Drink only boiled or bottled water afterwards.</li>
+      </ol>
+    </details>
+
+    <details>
+      <summary>Road accident</summary>
+      <ol>
+        <li>Park safely, switch on hazard lights and check for danger such as fuel leaks or traffic.</li>
+        <li>Call 112 or 108 and give the exact location.</li>
+        <li>Do not move injured people unless there is fire or immediate danger.</li>
+        <li>Control bleeding with pressure. Stay until help arrives.</li>
+      </ol>
+    </details>
+  </section>
+
+  <section id="card">
+    <h2>Your emergency card</h2>
+    <p class="lead">Save key details for a responder or family member. They stay on this device only.</p>
+    <form id="cardForm" class="card-form">
+      <label>Full name <input name="name" autocomplete="name"></label>
+      <label>Blood group <input name="blood" placeholder="e.g. B+"></label>
+      <label class="wide">Allergies or medical conditions <input name="medical"></label>
+      <label>Emergency contact name <input name="cname"></label>
+      <label>Emergency contact phone <input name="cphone" type="tel" inputmode="tel"></label>
+      <div class="wide row">
+        <button class="btn btn-red" type="submit">Save card</button>
+        <button class="btn btn-ghost" type="button" id="clearCard">Clear</button>
+      </div>
+    </form>
+    <div id="cardView" class="card-view" hidden></div>
+  </section>
+
+</main>
+
+<footer>
+  <p>This guide gives general first aid information and is not a substitute for medical care or professional training. In any serious situation, call 112 first.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
