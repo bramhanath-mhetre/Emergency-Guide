@@ -2,7 +2,6 @@
   "use strict";
 
   var statusEl = document.getElementById("status");
-
   function setStatus(msg) { statusEl.textContent = msg; }
 
   /* ---------- Location helpers ---------- */
@@ -108,7 +107,8 @@
     form.reset();
     render(null);
   });
-})();/* ---------- loading screen with safety quotes ---------- */
+})();
+
 /* ---------- loading screen with safety quotes ---------- */
 (function () {
   var L = document.getElementById("loader");
@@ -160,6 +160,7 @@
     io.observe(s);
   });
 })();
+
 /* ---------- SOS button: opens WhatsApp to your saved contact with your location ---------- */
 (function () {
   var box = document.querySelector(".hero-actions");
