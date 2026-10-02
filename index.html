@@ -219,4 +219,12 @@
     <button class="btn btn-ghost" id="skipLoader" type="button">Skip</button>
   </div>
 </div>
+  <script>
+  (function () {
+    var L = document.getElementById("loader");
+    function hide() { if (L) L.style.display = "none"; }
+    document.getElementById("skipLoader").onclick = hide;
+    setTimeout(hide, 4000);
+  })();
+</script>
 </html>
