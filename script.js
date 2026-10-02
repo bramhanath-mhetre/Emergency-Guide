@@ -108,4 +108,86 @@
     form.reset();
     render(null);
   });
+})();/* ---------- loading screen with safety quotes ---------- */
+(function () {
+  var L = document.getElementById("loader");
+  if (!L) return;
+  var seen = null;
+  try { seen = sessionStorage.getItem("seen"); } catch (e) {}
+  if (seen) { L.remove(); return; }
+
+  var quotes = [
+    "Stay calm. Clear thinking saves lives.",
+    "Know your exits before you need them.",
+    "Two minutes of first aid can change everything.",
+    "In an emergency, call first, then help.",
+    "Preparation turns panic into action.",
+    "Safety is what you do before it is needed."
+  ];
+  var q = document.getElementById("quote"), i = 0;
+  var timer = setInterval(function () {
+    i = (i + 1) % quotes.length;
+    q.classList.add("swap");
+    setTimeout(function () { q.textContent = quotes[i]; q.classList.remove("swap"); }, 300);
+  }, 2200);
+
+  var minDone = false, loaded = document.readyState === "complete";
+  function hide() {
+    clearInterval(timer);
+    L.classList.add("done");
+    setTimeout(function () { L.remove(); }, 500);
+    try { sessionStorage.setItem("seen", "1"); } catch (e) {}
+  }
+  setTimeout(function () { minDone = true; if (loaded) hide(); }, 2000);
+  window.addEventListener("load", function () { loaded = true; if (minDone) hide(); });
+  document.getElementById("skipLoader").addEventListener("click", hide);
+})();
+
+/* ---------- sections fade in as you scroll ---------- */
+(function () {
+  if (!("IntersectionObserver" in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll("main section:not(.hero)").forEach(function (s) {
+    s.classList.add("reveal");
+    io.observe(s);
+  });
+})();
+
+/* ---------- SOS button: opens WhatsApp to your saved contact with your location ---------- */
+(function () {
+  var box = document.querySelector(".hero-actions");
+  if (!box) return;
+  var btn = document.createElement("button");
+  btn.className = "btn btn-sos";
+  btn.type = "button";
+  btn.textContent = "SOS: alert my contact";
+  box.appendChild(btn);
+
+  btn.addEventListener("click", function () {
+    var d = null;
+    try { d = JSON.parse(localStorage.getItem("emergency-card-v1")); } catch (e) {}
+    var phone = d && d.cphone ? d.cphone.replace(/\D/g, "") : "";
+    if (!phone) {
+      alert("First save an emergency contact in the Emergency card section.");
+      location.hash = "#card";
+      return;
+    }
+    if (phone.length === 10) phone = "91" + phone;
+
+    function send(c) {
+      var msg = (d.name ? d.name + " needs help." : "I need help.") + " EMERGENCY." +
+        (c ? " My location: https://www.google.com/maps?q=" + c.latitude + "," + c.longitude : "");
+      window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+    }
+    if (!navigator.geolocation) { send(null); return; }
+    navigator.geolocation.getCurrentPosition(
+      function (p) { send(p.coords); },
+      function () { send(null); },
+      { timeout: 8000 }
+    );
+  });
 })();
