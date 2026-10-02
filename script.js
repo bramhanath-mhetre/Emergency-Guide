@@ -109,6 +109,7 @@
     render(null);
   });
 })();/* ---------- loading screen with safety quotes ---------- */
+/* ---------- loading screen with safety quotes ---------- */
 (function () {
   var L = document.getElementById("loader");
   if (!L) return;
@@ -131,8 +132,10 @@
     setTimeout(function () { q.textContent = quotes[i]; q.classList.remove("swap"); }, 300);
   }, 2200);
 
-  var minDone = false, loaded = document.readyState === "complete";
+  var done = false, minDone = false, loaded = document.readyState === "complete";
   function hide() {
+    if (done) return;
+    done = true;
     clearInterval(timer);
     L.classList.add("done");
     setTimeout(function () { L.remove(); }, 500);
@@ -140,6 +143,7 @@
   }
   setTimeout(function () { minDone = true; if (loaded) hide(); }, 2000);
   window.addEventListener("load", function () { loaded = true; if (minDone) hide(); });
+  setTimeout(hide, 4000);
   document.getElementById("skipLoader").addEventListener("click", hide);
 })();
 
@@ -150,13 +154,12 @@
     entries.forEach(function (e) {
       if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0 });
   document.querySelectorAll("main section:not(.hero)").forEach(function (s) {
     s.classList.add("reveal");
     io.observe(s);
   });
 })();
-
 /* ---------- SOS button: opens WhatsApp to your saved contact with your location ---------- */
 (function () {
   var box = document.querySelector(".hero-actions");
