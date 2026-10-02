@@ -147,4 +147,27 @@ footer p { max-width: 62ch; margin: 0 auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-}
+}/* ---------- loader ---------- */
+#loader{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;padding:2rem;text-align:center;background:var(--paper);transition:opacity .5s,visibility .5s}
+#loader.done{opacity:0;visibility:hidden}
+.pulse{width:9rem;height:9rem;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-size:3rem;animation:beat 1.2s ease-in-out infinite}
+@keyframes beat{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(200,16,46,.5)}50%{transform:scale(1.08);box-shadow:0 0 0 24px rgba(200,16,46,0)}100%{transform:scale(1);box-shadow:0 0 0 0 rgba(200,16,46,0)}}
+#quote{font-size:1.4rem;max-width:26ch;margin:0;min-height:4.5em;transition:opacity .3s,transform .3s}
+#quote.swap{opacity:0;transform:translateY(8px)}
+.loader-actions{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
+
+/* ---------- page animations ---------- */
+.hero h1,.hero p,.hero-actions{animation:rise .7s both}
+.hero p{animation-delay:.1s}
+.hero-actions{animation-delay:.2s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.num,.chip,.btn,details{transition:transform .2s ease,box-shadow .2s ease,background .2s,border-color .2s,color .2s}
+.num:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.14)}
+.btn:hover,.chip:hover{transform:translateY(-2px)}
+.btn:active,.num:active,.chip:active{transform:scale(.97)}
+.btn-sos{background:#7a0a1d;color:#fff;animation:ring 2s infinite}
+.btn-sos:hover{background:#5c0715}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(200,16,46,.55)}70%{box-shadow:0 0 0 14px rgba(200,16,46,0)}100%{box-shadow:0 0 0 0 rgba(200,16,46,0)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
